@@ -5,12 +5,23 @@ import Shared from "./shared/shared";
 import Admin from "./admin/admin";
 import Client from "./client/client";
 
+import NotFound from "./shared/components/404/404";
+
 export default function Router() {
     return (
         <Switch>
-            <Route exact path="/" component={Shared} />
-            <Route exact path="/app" component={Client} />
-            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/404">
+                <NotFound />
+            </Route>
+            <Route path="/app">
+                <Client />
+            </Route>
+            <Route path="/admin">
+                <Admin />
+            </Route>
+            <Route path="/">
+                <Shared />
+            </Route>
         </Switch>
     );
 }
