@@ -10,13 +10,13 @@ import about from "assets/images/about.jpg";
 
 function About() {
     return (
-        <div className="min-w-screen min-h-screen bg-gray-200 flex items-center p-5 lg:p-20 overflow-hidden relative">
-            <div className="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center md:text-left">
+        <div className="min-w-screen min-h-screen bg-white flex items-center p-5 lg:p-20 overflow-hidden">
+            <div className="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 lg:pt-8 text-gray-800 md:flex items-center text-center md:text-left">
                 <div className="w-full md:w-1/2">
-                    <div className="mb-10 p-4 md:p-8 text-gray-600 font-light ">
+                    <div className="mb-10 p-4 md:p-8 text-gray-600 font-light">
                         <NavLink
                             to="/"
-                            className="mb-10 text-lg font-light transform transition-all hover:scale-110 text-red-400 hover:text-red-600 flex justify-center md:justify-start items-center flex-col md:flex-row "
+                            className="mb-10 mt-20 text-lg font-light transform transition-all hover:scale-110 text-red-400 hover:text-red-600 flex justify-center md:justify-start items-center flex-col md:flex-row"
                         >
                             <ArrowCircleLeftIcon className="h-10 w-10 mb-2 md:mr-2 md:mb-0" />
                             <p>Go to homepage</p>
