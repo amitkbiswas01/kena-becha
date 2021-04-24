@@ -6,6 +6,7 @@ import { LOGIN, SIGNUP } from "shared/constants";
 import Navbar from "./components/navbar/navbar";
 import Home from "./components/home/home";
 import About from "./components/about/about";
+import Shop from "./components/shop/shop";
 
 export const profileItems = [
     { name: "Login", href: LOGIN },
@@ -23,6 +24,9 @@ export default function Shared() {
                     </Route>
                     <Route exact path="/about">
                         <About />
+                    </Route>
+                    <Route exact path="/shop">
+                        <Shop />
                     </Route>
                     <Redirect exact from="/" to="/home" />
                     <Redirect exact to="/404" from="*" />

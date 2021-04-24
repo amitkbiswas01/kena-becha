@@ -5,7 +5,7 @@ import Users from "./users/users";
 import Dashboard from "./dashboard/dashboard";
 
 export default function Admin() {
-    const { path, url } = useRouteMatch();
+    const { path } = useRouteMatch();
     return (
         <Switch>
             <Route exact path={`${path}/dashboard`}>
