@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import banner from "assets/images/banner.jpg";
-import { SIGNUP, SHOP } from "shared/constants";
+import { SIGNUP, SHOP } from "utils/constants";
 
 export default function Home() {
     return (

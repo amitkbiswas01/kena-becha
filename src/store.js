@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { sharedReducer } from "shared/sharedReducer";
+import { sharedReducer } from "shared/shared.reducer";
 
 const rootReducer = combineReducers({ ...sharedReducer });
 

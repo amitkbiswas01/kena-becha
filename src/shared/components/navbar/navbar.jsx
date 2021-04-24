@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
-import { HOME, SHOP, ABOUT } from "shared/constants";
+import { HOME, SHOP, ABOUT } from "utils/constants";
 import logo from "assets/images/logo.png";
 
 const navbarItems = [

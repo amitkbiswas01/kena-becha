@@ -7,9 +7,9 @@ import {
     loaderSelector,
     productsSelector,
     errorSelector,
-} from "./shopSlice";
-import { getProducts } from "./shopThunk";
-import ShopView from "./shopView";
+} from "./shop.slice";
+import { getProducts } from "./shop.thunk";
+import ShopView from "./shop.view";
 
 export default function Shop() {
     const history = useHistory();
@@ -26,7 +26,7 @@ export default function Shop() {
     }, [dispatch]);
 
     const viewDetails = (id) => {
-        history.push(`/products/${id}`);
+        history.push(`/shop/${id}`);
     };
 
     return (

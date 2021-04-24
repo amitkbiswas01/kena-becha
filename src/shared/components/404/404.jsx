@@ -4,7 +4,9 @@ import { ArrowCircleLeftIcon } from "@heroicons/react/solid";
 
 import fourZeroFour from "assets/images/404.jpg";
 
-export default function NotFound() {
+export default function NotFound({
+    message = "The page you're looking for isn't available.",
+}) {
     return (
         <div className="min-w-screen min-h-screen bg-gray-200 flex items-center p-5 lg:p-20 overflow-hidden relative">
             <div className="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center md:text-left">
@@ -14,7 +16,7 @@ export default function NotFound() {
                             You seem to be lost!
                         </h1>
                         <p className="font-black text-xl lg:text-2xl">
-                            The page you're looking for isn't available.
+                            {message}
                         </p>
                         <p className="text-lg">
                             Try searching again or use the Go Back button below.

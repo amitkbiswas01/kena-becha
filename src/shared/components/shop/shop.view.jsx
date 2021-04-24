@@ -36,7 +36,7 @@ export default function ShopView({ products, viewDetails }) {
                                 </p>
                             </div>
                             <div className="w-full pt-4 flex justify-between">
-                                <p className=" rounded-full text-white bg-red-500 px-2 py-1 text-xs font-bold mr-3">
+                                <p className="rounded-full text-white bg-red-500 px-2 py-1 text-xs font-bold mr-3">
                                     {product.category.name}
                                 </p>
                             </div>

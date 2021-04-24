@@ -1,5 +1,5 @@
 import React from "react";
-import { LOGOUT } from "shared/constants";
+import { LOGOUT } from "utils/constants";
 
 export const profileItems = [
     { name: "Profile", href: "/profile" },
