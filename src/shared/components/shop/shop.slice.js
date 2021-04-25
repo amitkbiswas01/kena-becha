@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { getProducts } from "./shop.thunk";
 
-export const initialState = {
+export const shopInitialState = {
     products: [],
     isLoading: true,
     error: null,
@@ -10,12 +10,12 @@ export const initialState = {
 
 export const shopSlice = createSlice({
     name: "shop",
-    initialState: initialState,
+    initialState: shopInitialState,
     reducers: {
         reset: (state) => {
-            state.products = initialState.products;
-            state.isLoading = initialState.isLoading;
-            state.error = initialState.error;
+            state.products = shopInitialState.products;
+            state.isLoading = shopInitialState.isLoading;
+            state.error = shopInitialState.error;
         },
     },
     extraReducers: {

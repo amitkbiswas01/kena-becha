@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { loginHandler } from "./login.thunk";
 
 // is it okay to set initialState like this?
-export const initialState = {
+export const productInitialState = {
     error: null,
     userInfo: {
         user: sessionStorage.getItem("user"),
@@ -20,7 +20,7 @@ export const initialState = {
 
 export const loginSlice = createSlice({
     name: "login",
-    initialState: initialState,
+    initialState: productInitialState,
     // is it okay to access session like this?
     reducers: {
         logout: (state) => {

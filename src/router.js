@@ -5,6 +5,9 @@ import Shared from "./shared/shared";
 import Admin from "./admin/admin";
 import Client from "./client/client";
 
+import { LOGIN } from "utils/constants";
+import ProtectedRoutes from "utils/protected.routes";
+
 import NotFound from "./shared/components/404/404";
 
 export default function Router() {
@@ -13,9 +16,9 @@ export default function Router() {
             <Route exact path="/404">
                 <NotFound />
             </Route>
-            <Route path="/app">
+            <ProtectedRoutes path="/app" cond="auth" dest={LOGIN}>
                 <Client />
-            </Route>
+            </ProtectedRoutes>
             <Route path="/admin">
                 <Admin />
             </Route>

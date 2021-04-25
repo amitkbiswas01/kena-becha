@@ -1,11 +1,21 @@
 import React from "react";
-import { LOGOUT } from "utils/constants";
+import { useSelector } from "react-redux";
 
-export const profileItems = [
-    { name: "Profile", href: "/profile" },
-    { name: "Sign out", href: LOGOUT },
-];
+import ClientRoutes from "./client.routes";
+import Navbar from "shared/components/navbar/navbar";
+import Footer from "shared/components/footer/footer";
+import { loginSelector } from "shared/components/login/login.slice";
 
 export default function Client() {
-    return <div>This is client page</div>;
+    const isLoggedIn = useSelector(loginSelector);
+
+    return (
+        <>
+            <Navbar isLoggedIn={isLoggedIn} />
+            <main>
+                <ClientRoutes />
+            </main>
+            <Footer />
+        </>
+    );
 }

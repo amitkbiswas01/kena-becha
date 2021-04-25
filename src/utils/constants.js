@@ -7,6 +7,7 @@ export const LOGIN = "/login";
 export const LOGOUT = "/logout";
 
 // client links
+export const APP = "/app";
 export const PROFILE = "/app/profile";
 export const CART = "/app/cart";
 

@@ -12,9 +12,10 @@ import {
     SIGNUP,
     LOGOUT,
     PROFILE,
+    CART,
 } from "utils/constants";
 
-const navbarItems = [
+export const navigationItems = [
     { name: "Home", href: HOME },
     { name: "Shop", href: SHOP },
     { name: "About", href: ABOUT },
@@ -31,6 +32,10 @@ export const privateItems = [
 
 export default function Navbar({ isLoggedIn }) {
     const profileItems = isLoggedIn ? privateItems : publicItems;
+    const navbarItems = isLoggedIn
+        ? [...navigationItems, { name: "Cart", href: CART }]
+        : navigationItems;
+
     return (
         <Disclosure as="nav" className="bg-white sticky shadow-md">
             {({ open }) => (

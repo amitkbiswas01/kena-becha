@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
 import { logout } from "../login/login.slice";
-import { HOME } from "utils/constants";
+import { LOGIN } from "utils/constants";
 
 export default function Logout() {
     const history = useHistory();
@@ -11,7 +11,7 @@ export default function Logout() {
 
     useEffect(() => {
         dispatch(logout());
-        history.push(HOME);
+        history.push(LOGIN);
     }, [dispatch, history]);
 
     return <></>;

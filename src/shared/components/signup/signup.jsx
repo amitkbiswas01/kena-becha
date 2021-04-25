@@ -15,10 +15,10 @@ export default function Signup() {
 
     const submitHandler = async (values, submitProps) => {
         const { type } = await dispatch(signupHandler(values));
-
         if (type !== "signup/signupHandler/rejected") {
-            submitProps.resetForm();
             history.push(LOGIN);
+        } else {
+            submitProps.setSubmitting(false);
         }
     };
 

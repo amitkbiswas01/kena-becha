@@ -11,12 +11,17 @@ import {
 import { getProducts } from "./shop.thunk";
 import ShopView from "./shop.view";
 
+import { loginSelector } from "shared/components/login/login.slice";
+import { updateCart } from "client/components/cart/cart.thunk";
+
 export default function Shop() {
     const history = useHistory();
     const dispatch = useDispatch();
     const loader = useSelector(loaderSelector);
+    const cartLoader = useSelector((state) => state.cartReducer.isLoading);
     const products = useSelector(productsSelector);
     const error = useSelector(errorSelector);
+    const isLoggedIn = useSelector(loginSelector);
 
     useEffect(() => {
         dispatch(getProducts());
@@ -29,6 +34,10 @@ export default function Shop() {
         history.push(`/shop/${id}`);
     };
 
+    const cartHandler = (id, action) => {
+        dispatch(updateCart({ id: id, action: action }));
+    };
+
     return (
         <div>
             {loader ? (
@@ -38,7 +47,13 @@ export default function Shop() {
             ) : error ? (
                 <h1>Error occurred!</h1>
             ) : (
-                <ShopView viewDetails={viewDetails} products={products} />
+                <ShopView
+                    viewDetails={viewDetails}
+                    products={products}
+                    isLoggedIn={isLoggedIn}
+                    cartHandler={cartHandler}
+                    cartLoader={cartLoader}
+                />
             )}
         </div>
     );

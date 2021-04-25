@@ -1,6 +1,9 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
+import ProtectedRoutes from "utils/protected.routes";
+import { HOME, LOGIN, ABOUT, SHOP, LOGOUT, SIGNUP } from "utils/constants";
+
 import Home from "./components/home/home";
 import About from "./components/about/about";
 import Shop from "./components/shop/shop";
@@ -12,28 +15,28 @@ import Signup from "./components/signup/signup";
 export default function SharedRoutes() {
     return (
         <Switch>
-            <Route exact path="/home">
+            <Route exact path={HOME}>
                 <Home />
             </Route>
-            <Route exact path="/about">
+            <Route exact path={ABOUT}>
                 <About />
             </Route>
-            <Route exact path="/shop">
+            <Route exact path={SHOP}>
                 <Shop />
             </Route>
-            <Route exact path="/shop/:id">
+            <Route exact path={`${SHOP}/:id`}>
                 <Product />
             </Route>
-            <Route exact path="/login">
+            <ProtectedRoutes exact path={LOGIN} cond="no-auth" dest={HOME}>
                 <Login />
-            </Route>
-            <Route exact path="/logout">
+            </ProtectedRoutes>
+            <ProtectedRoutes exact path={LOGOUT} cond="auth" dest={LOGIN}>
                 <Logout />
-            </Route>
-            <Route exact path="/signup">
+            </ProtectedRoutes>
+            <ProtectedRoutes exact path={SIGNUP} cond="no-auth" dest={HOME}>
                 <Signup />
-            </Route>
-            <Redirect exact from="/" to="/home" />
+            </ProtectedRoutes>
+            <Redirect exact from="/" to={HOME} />
             <Redirect exact to="/404" from="*" />
         </Switch>
     );

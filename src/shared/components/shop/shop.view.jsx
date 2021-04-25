@@ -1,6 +1,15 @@
 import React from "react";
 
-export default function ShopView({ products, viewDetails }) {
+import { ShoppingCartIcon } from "@heroicons/react/solid";
+
+export default function ShopView({
+    products,
+    viewDetails,
+    isLoggedIn,
+    cartHandler,
+    cartLoader,
+}) {
+    if (typeof cartLoader !== "boolean") cartLoader = false;
     return (
         <section>
             <div className="w-3/4 mx-auto flex flex-col py-16">
@@ -35,10 +44,22 @@ export default function ShopView({ products, viewDetails }) {
                                     ${product.price}
                                 </p>
                             </div>
-                            <div className="w-full pt-4 flex justify-between">
-                                <p className="rounded-full text-white bg-red-500 px-2 py-1 text-xs font-bold mr-3">
+                            <div className="w-full pt-4 flex justify-between items-center">
+                                <p className="rounded-full text-white bg-red-500 px-2 py-1 text-xs font-bold">
                                     {product.category.name}
                                 </p>
+                                {isLoggedIn && (
+                                    <button
+                                        className="btn text-sm font-bold px-2 py-1 hover:text-white hover:bg-red-500"
+                                        disabled={cartLoader}
+                                        onClick={() =>
+                                            cartHandler(product._id, "add")
+                                        }
+                                    >
+                                        <ShoppingCartIcon className="w-5 h-5 inline-block mr-1" />{" "}
+                                        Add to cart
+                                    </button>
+                                )}
                             </div>
                         </div>
                     );

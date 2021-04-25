@@ -12,7 +12,6 @@ export default function LoginView({ errorMessage, submitHandler }) {
             <section className="w-full mx-auto lg:w-1/2 flex flex-col">
                 <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                     <Formik
-                        enableReinitialize={true}
                         initialValues={{ email: "", password: "" }}
                         validationSchema={loginValidationSchema}
                         onSubmit={submitHandler}
