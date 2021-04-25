@@ -2,8 +2,11 @@
     "cSpell.words": [
         "Flaticon",
         "SIGNUP",
+        "firstname",
         "formik",
         "headlessui",
-        "heroicons"
+        "heroicons",
+        "lastname",
+        "zipcode"
     ]
 }
