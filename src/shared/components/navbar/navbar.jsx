@@ -3,16 +3,34 @@ import { NavLink } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
-import { HOME, SHOP, ABOUT } from "utils/constants";
 import logo from "assets/images/logo.png";
+import {
+    HOME,
+    SHOP,
+    ABOUT,
+    LOGIN,
+    SIGNUP,
+    LOGOUT,
+    PROFILE,
+} from "utils/constants";
 
 const navbarItems = [
     { name: "Home", href: HOME },
     { name: "Shop", href: SHOP },
     { name: "About", href: ABOUT },
 ];
+export const publicItems = [
+    { name: "Login", href: LOGIN },
+    { name: "Sign up", href: SIGNUP },
+];
 
-export default function Navbar({ profileItems }) {
+export const privateItems = [
+    { name: "Profile", href: PROFILE },
+    { name: "Logout", href: LOGOUT },
+];
+
+export default function Navbar({ isLoggedIn }) {
+    const profileItems = isLoggedIn ? privateItems : publicItems;
     return (
         <Disclosure as="nav" className="bg-white sticky shadow-md">
             {({ open }) => (

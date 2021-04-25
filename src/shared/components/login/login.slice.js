@@ -21,7 +21,18 @@ export const initialState = {
 export const loginSlice = createSlice({
     name: "login",
     initialState: initialState,
-    reducers: {},
+    // is it okay to access session like this?
+    reducers: {
+        logout: (state) => {
+            sessionStorage.removeItem("user");
+            sessionStorage.removeItem("role");
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("expire_at");
+            state.error = null;
+            state.userInfo = {};
+            state.isLoggedIn = false;
+        },
+    },
     extraReducers: {
         [loginHandler.fulfilled]: (state, action) => {
             state.userInfo = action.payload;
@@ -34,6 +45,7 @@ export const loginSlice = createSlice({
     },
 });
 
+export const { logout } = loginSlice.actions;
 export const loginReducer = loginSlice.reducer;
 
 // common selectors

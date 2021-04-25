@@ -6,6 +6,7 @@ import About from "./components/about/about";
 import Shop from "./components/shop/shop";
 import Product from "./components/product/product";
 import Login from "./components/login/login";
+import Logout from "./components/logout/logout";
 import Signup from "./components/signup/signup";
 
 export default function SharedRoutes() {
@@ -25,6 +26,9 @@ export default function SharedRoutes() {
             </Route>
             <Route exact path="/login">
                 <Login />
+            </Route>
+            <Route exact path="/logout">
+                <Logout />
             </Route>
             <Route exact path="/signup">
                 <Signup />

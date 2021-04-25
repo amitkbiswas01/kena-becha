@@ -6,6 +6,10 @@ export const SIGNUP = "/signup";
 export const LOGIN = "/login";
 export const LOGOUT = "/logout";
 
+// client links
+export const PROFILE = "/app/profile";
+export const CART = "/app/cart";
+
 // external links
 export const BASE_URL = "http://localhost:8080";
 export const LOGIN_URL = "http://localhost:8080/signin";

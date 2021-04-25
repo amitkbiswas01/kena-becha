@@ -1,20 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import SharedRoutes from "./shared.routes";
-import { LOGIN, SIGNUP } from "utils/constants";
-
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
-
-export const profileItems = [
-    { name: "Login", href: LOGIN },
-    { name: "Sign up", href: SIGNUP },
-];
+import { loginSelector } from "./components/login/login.slice";
 
 export default function Shared() {
+    const isLoggedIn = useSelector(loginSelector);
+
     return (
         <>
-            <Navbar profileItems={profileItems} />
+            <Navbar isLoggedIn={isLoggedIn} />
             <main>
                 <SharedRoutes />
             </main>
