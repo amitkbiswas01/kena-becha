@@ -109,7 +109,7 @@ export default function Navbar({ profileItems }) {
                                                                         item.href
                                                                     }
                                                                     activeClassName="border-b-4 border-red-400"
-                                                                    className="p-4 text-gray-600 block text-base font-medium transform transition-all hover:scale-110 hover:shadow-md hover:bg-red-100"
+                                                                    className="p-4 text-gray-600 block text-base font-medium transform transition-all hover:scale-110 hover:shadow-md hover:bg-red-400 hover:text-gray-700 rounded-lg"
                                                                 >
                                                                     {item.name}
                                                                 </NavLink>

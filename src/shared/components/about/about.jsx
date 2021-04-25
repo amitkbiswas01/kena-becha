@@ -49,7 +49,7 @@ function About() {
                         </a>
                         <a
                             href="tel:+555555"
-                            className="px-4 py-2 text-lg font-light transform transition-all hover:scale-110 border-2 rounded-md border-red-400 hover:border-red-600 text-red-400 hover:text-red-600 flex flex-col md:flex-row justify-center items-center"
+                            className="btn transform transition-all hover:scale-110 flex flex-col md:flex-row justify-center items-center"
                         >
                             <PhoneIcon className="h-5 w-5 mr-2 hidden md:inline-block" />
                             <p>Contact Us</p>
