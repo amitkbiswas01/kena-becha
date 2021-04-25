@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ShopView({ products, viewDetails }) {
     return (
-        <>
+        <section>
             <div className="w-3/4 mx-auto flex flex-col py-16">
                 <h2 className="text-4xl">Some of the products</h2>
                 <p className="text-xl">
@@ -44,6 +44,6 @@ export default function ShopView({ products, viewDetails }) {
                     );
                 })}
             </div>
-        </>
+        </section>
     );
 }

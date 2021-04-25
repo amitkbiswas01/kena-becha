@@ -41,7 +41,7 @@ function About() {
                     </div>
                     <div className="mb-20 md:mb-0 p-4 md:p-8 flex justify-center md:justify-start items-center">
                         <a
-                            href="mailto:amitkbiswas01@gmail.com>subject=e-commerce-mail"
+                            href="mailto:amitkbiswas01@gmail.com?subject=e-commerce-mail"
                             className="px-4 py-2 mr-4 text-lg font-light transform transition-all hover:scale-110 border-2 rounded-md border-red-400 hover:border-red-600 text-red-400 hover:text-red-600 flex flex-col md:flex-row justify-center md:justify-start items-center"
                         >
                             <MailIcon className="h-5 w-5 mr-2 hidden md:inline-block" />

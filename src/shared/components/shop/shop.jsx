@@ -32,7 +32,9 @@ export default function Shop() {
     return (
         <div>
             {loader ? (
-                <h1>Loading ...</h1>
+                <div>
+                    <h2>Loading</h2>
+                </div>
             ) : error ? (
                 <h1>Error occurred!</h1>
             ) : (

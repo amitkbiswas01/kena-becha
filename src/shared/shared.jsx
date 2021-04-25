@@ -2,7 +2,9 @@ import React from "react";
 
 import SharedRoutes from "./shared.routes";
 import { LOGIN, SIGNUP } from "utils/constants";
+
 import Navbar from "./components/navbar/navbar";
+import Footer from "./components/footer/footer";
 
 export const profileItems = [
     { name: "Login", href: LOGIN },
@@ -16,6 +18,7 @@ export default function Shared() {
             <main>
                 <SharedRoutes />
             </main>
+            <Footer />
         </>
     );
 }
