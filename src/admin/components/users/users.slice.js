@@ -32,7 +32,11 @@ export const userInitialState = {
 export const usersSlice = createSlice({
     name: "users",
     initialState: userInitialState,
-    reducers: {},
+    reducers: {
+        resetForm: (state) => {
+            state.user = { ...userInitialState.user };
+        },
+    },
     extraReducers: {
         [getAllUsers.pending]: (state, action) => {
             if (!state.isLoading) state.isLoading = true;
@@ -91,6 +95,7 @@ export const usersSlice = createSlice({
     },
 });
 
+export const { resetForm } = usersSlice.actions;
 export const usersReducer = usersSlice.reducer;
 
 // common selectors

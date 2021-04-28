@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import { signupValidation } from "utils/validation";
-import { userSelector, errorSelector } from "./users.slice";
-import { createUpdateUser } from "./users.thunk";
+import { userSelector, errorSelector, resetForm } from "./users.slice";
+import { createUpdateUser, getSingleUser } from "./users.thunk";
 
 import { ADMIN_HOME } from "utils/constants";
 
@@ -16,11 +16,16 @@ export default function UserForm({ action }) {
     const initialValues = useSelector(userSelector);
     const errorMessage = useSelector(errorSelector);
 
+    useEffect(() => {
+        if (action === "update") dispatch(getSingleUser(id));
+    }, [dispatch, action, id]);
+
     const submitHandler = (values, submitProps) => {
         dispatch(
             createUpdateUser({ values: values, action: action, id: id }),
         ).then(() => {
             submitProps.resetForm();
+            dispatch(resetForm());
             history.push(ADMIN_HOME);
         });
     };
