@@ -1,21 +1,15 @@
 import React from "react";
-import { Route, Redirect, Switch, useRouteMatch } from "react-router-dom";
 
-import Users from "./users/users";
-import Dashboard from "./dashboard/dashboard";
+import AdminNavbar from "./components/navbar/navbar";
+import AdminRoutes from "./admin.routes";
 
 export default function Admin() {
-    const { path } = useRouteMatch();
     return (
-        <Switch>
-            <Route exact path={`${path}/dashboard`}>
-                <Dashboard />
-            </Route>
-            <Route exact path={`${path}/users`}>
-                <Users />
-            </Route>
-            <Redirect exact to={`${path}/dashboard`} from={path} />
-            <Redirect exact to="/404" from="*" />
-        </Switch>
+        <div className="min-h-screen w-full flex overflow-hidden">
+            <AdminNavbar />
+            <main className="flex-1 flex flex-col bg-gray-100 dark:bg-gray-700 transition duration-500 ease-in-out overflow-y-auto">
+                <AdminRoutes />
+            </main>
+        </div>
     );
 }

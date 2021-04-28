@@ -12,7 +12,7 @@ export const getCartItems = createAsyncThunk("cart/getCartItems", async () => {
             Authorization: `bearer ${token ? token : ""}`,
         },
     });
-    return res.data.products;
+    return res.data;
 });
 
 export const updateCart = createAsyncThunk(
@@ -22,7 +22,7 @@ export const updateCart = createAsyncThunk(
         const state = getState();
 
         // find item with id in store
-        const item = state.cartReducer?.cartItems.find(
+        const item = state.cartReducer.cartItems?.find(
             (item) => item.productId._id === id,
         );
 

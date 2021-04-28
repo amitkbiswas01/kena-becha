@@ -10,13 +10,21 @@ export const cartInitialState = {
 export const cartSlice = createSlice({
     name: "cart",
     initialState: cartInitialState,
-    reducers: {},
+    reducers: {
+        resetCart: (state) => {
+            state.error = null;
+            state.cartID = null;
+            state.cartItems = [];
+            state.isLoading = false;
+        },
+    },
     extraReducers: {
         [getCartItems.pending]: (state, action) => {
             if (!state.isLoading) state.isLoading = true;
         },
         [getCartItems.fulfilled]: (state, action) => {
-            state.cartItems = action.payload;
+            const { products } = action.payload;
+            state.cartItems = products;
             if (state.isLoading) state.isLoading = false;
         },
         [getCartItems.rejected]: (state, action) => {
@@ -37,6 +45,7 @@ export const cartSlice = createSlice({
     },
 });
 
+export const { resetCart } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;
 
 // common selectors

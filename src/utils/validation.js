@@ -30,16 +30,14 @@ export const signupValidation = Yup.object({
     email: Yup.string()
         .email("Invalid Email address!")
         .required("Email is required!"),
-    password: Yup.string()
-        .min(8)
-        .max(20)
-        .required("Can't signup without a Password!"),
+    password: Yup.string().min(8).max(20).required("Password can't be empty!"),
     repassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords must match!")
         .required("Enter first password again!"),
     username: Yup.string("Username can't be just numbers!").required(
         "Username is required!",
     ),
+    role: Yup.string().required("Role must be defined!"),
     firstname: Yup.string("Name can't be just numbers!").required(
         "First name is required!",
     ),

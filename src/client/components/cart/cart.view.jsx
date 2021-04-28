@@ -1,16 +1,48 @@
 import React from "react";
-import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/solid";
+import {
+    PlusCircleIcon,
+    MinusCircleIcon,
+    ArrowCircleRightIcon,
+} from "@heroicons/react/solid";
 
-export default function CartView({ loader, cartItems, cartHandler }) {
+export default function CartView({
+    loader,
+    cartItems,
+    cartHandler,
+    checkoutHandler,
+}) {
+    const totalPrice = () => {
+        if (cartItems && cartItems.length > 0) {
+            const sum = cartItems.reduce((acc, { productId, quantity }) => {
+                return acc + productId.price * quantity;
+            }, 0);
+
+            return sum.toFixed(2);
+        } else return 0;
+    };
     return (
         <div className="min-w-screen min-h-screen">
             <div className="container mx-auto px-8 lg:px-16 pt-16 flex flex-col">
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div className="shadow-md overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <h1 className="text-center font-light text-4xl my-8">
-                                Cart Items
-                            </h1>
+                            <div className="mx-8 md:mx-16 my-8 flex justify-between items-center">
+                                <h1 className="text-center font-bold text-lg">
+                                    Total Price:
+                                    <span className="ml-4 text-4xl font-light text-red-800">
+                                        ${totalPrice()}
+                                    </span>
+                                </h1>
+                                <button className="btn transform transition-all hover:scale-110 flex items-center justify-center">
+                                    <div
+                                        className="mr-2 text-sm text-black"
+                                        onClick={() => checkoutHandler()}
+                                    >
+                                        Proceed to Checkout
+                                    </div>
+                                    <ArrowCircleRightIcon className="h-5 w-5" />
+                                </button>
+                            </div>
                             <table className="min-w-full divide-y divide-gray-200">
                                 <thead className="bg-gray-50">
                                     <tr>
