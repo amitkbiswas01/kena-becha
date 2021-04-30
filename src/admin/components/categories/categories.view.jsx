@@ -9,7 +9,7 @@ export default function CategoriesView({
     loader,
     categories,
     categoryHandler,
-    categoryDeletes,
+    categoryDelete,
 }) {
     return (
         <div className="min-w-screen min-h-screen">
@@ -89,7 +89,7 @@ export default function CategoriesView({
                                                 <div
                                                     className="ml-2 cursor-pointer transform transition-all hover:scale-110"
                                                     onClick={() =>
-                                                        categoryDeletes(
+                                                        categoryDelete(
                                                             category._id,
                                                         )
                                                     }

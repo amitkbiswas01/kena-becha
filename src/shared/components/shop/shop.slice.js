@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { getProducts } from "./shop.thunk";
+import { deleteProduct } from "admin/components/products/products.thunk";
 
 export const shopInitialState = {
     products: [],
@@ -27,6 +28,19 @@ export const shopSlice = createSlice({
             if (state.isLoading) state.isLoading = false;
         },
         [getProducts.rejected]: (state, action) => {
+            if (state.error === null) state.error = action.error;
+            if (state.isLoading) state.isLoading = false;
+        },
+        [deleteProduct.pending]: (state, action) => {
+            if (!state.isLoading) state.isLoading = true;
+        },
+        [deleteProduct.fulfilled]: (state, action) => {
+            state.products = state.products.filter(
+                (product) => product._id !== action.payload,
+            );
+            if (state.isLoading) state.isLoading = false;
+        },
+        [deleteProduct.rejected]: (state, action) => {
             if (state.error === null) state.error = action.error;
             if (state.isLoading) state.isLoading = false;
         },

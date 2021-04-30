@@ -76,3 +76,25 @@ export const categoryValidation = Yup.object({
                 ),
         ),
 });
+
+export const productValidation = Yup.object({
+    title: Yup.string().required("Title is required"),
+    price: Yup.number()
+        .required("Price is required")
+        .min(0, "Price can't be less than 0"),
+    description: Yup.string().required("Description is required"),
+    stock: Yup.number()
+        .required("Stock is required")
+        .min(0, "Stock can't be less than 0"),
+    image: Yup.mixed()
+        .required("Image is required")
+        .test(
+            "fileFormat",
+            "Unsupported Format",
+            (value) =>
+                value &&
+                ["image/jpg", "image/jpeg", "image/gif", "image/png"].includes(
+                    value.type,
+                ),
+        ),
+});

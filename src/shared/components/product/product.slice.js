@@ -3,7 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getSingleProduct } from "./product.thunk";
 
 export const productInitialState = {
-    product: {},
+    product: {
+        title: "",
+        price: "",
+        description: "",
+        image: "",
+        stock: "",
+        category: "",
+    },
     isLoading: true,
     error: null,
 };
