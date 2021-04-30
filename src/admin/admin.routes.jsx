@@ -10,8 +10,8 @@ import {
 } from "utils/constants";
 
 import Users from "./components/users/users";
-import Products from "./components/products/products";
 import Categories from "./components/categories/categories";
+import Products from "./components/products/products";
 import Orders from "./components/orders/orders";
 
 export default function AdminRoutes() {

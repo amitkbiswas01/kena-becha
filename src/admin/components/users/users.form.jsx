@@ -7,7 +7,7 @@ import { signupValidation } from "utils/validation";
 import { userSelector, errorSelector, resetForm } from "./users.slice";
 import { createUpdateUser, getSingleUser } from "./users.thunk";
 
-import { ADMIN_HOME } from "utils/constants";
+import { ADMIN_USERS } from "utils/constants";
 
 export default function UserForm({ action }) {
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function UserForm({ action }) {
         ).then(() => {
             submitProps.resetForm();
             dispatch(resetForm());
-            history.push(ADMIN_HOME);
+            history.push(ADMIN_USERS);
         });
     };
 

@@ -26,3 +26,4 @@ export const PRODUCTS_URL = "http://localhost:8080/products";
 export const CART_URL = "http://localhost:8080/cart";
 export const ORDER_URL = "http://localhost:8080/order";
 export const USERS_URL = "http://localhost:8080/user";
+export const CATEGORIES_URL = "http://localhost:8080/category";

@@ -5,7 +5,12 @@ import {
     ArrowCircleRightIcon,
 } from "@heroicons/react/solid";
 
-export default function UsersView({ loader, users, userHandler, userDelete }) {
+export default function CategoriesView({
+    loader,
+    categories,
+    categoryHandler,
+    categoryDeletes,
+}) {
     return (
         <div className="min-w-screen min-h-screen">
             <div className="container mx-auto px-8 lg:px-16 pt-16 flex flex-col">
@@ -15,10 +20,10 @@ export default function UsersView({ loader, users, userHandler, userDelete }) {
                             <div className="mx-8 md:mx-16 my-8 flex justify-end items-center">
                                 <button className="btn transform transition-all hover:scale-110 flex items-center justify-center">
                                     <div
-                                        onClick={() => userHandler()}
+                                        onClick={() => categoryHandler()}
                                         className="mr-2 text-sm text-black"
                                     >
-                                        Add New User
+                                        Add New Category
                                     </div>
                                     <ArrowCircleRightIcon className="h-5 w-5" />
                                 </button>
@@ -30,25 +35,13 @@ export default function UsersView({ loader, users, userHandler, userDelete }) {
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                            Name and Username
+                                            Name
                                         </th>
                                         <th
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                            Email and Phone
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                        >
-                                            Role
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                        >
-                                            Address
+                                            Description
                                         </th>
                                         <th
                                             scope="col"
@@ -59,46 +52,36 @@ export default function UsersView({ loader, users, userHandler, userDelete }) {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                    {users.map((user, index) => (
+                                    {categories.map((category, index) => (
                                         <tr key={index}>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <div className="text-md font-medium text-gray-900">
-                                                    {`${user.firstname} ${user.lastname}`}
-                                                </div>
-                                                <div className="text-sm text-gray-500">
-                                                    @{user.username}
+                                                <div className="flex items-center">
+                                                    <div className="flex-shrink-0 h-10 w-10">
+                                                        <img
+                                                            className="h-10 w-auto"
+                                                            src={category.image}
+                                                            alt={category.name}
+                                                        />
+                                                    </div>
+                                                    <div className="ml-4">
+                                                        <div className="text-md text-gray-900">
+                                                            {category.name}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <div className="text-md font-medium text-gray-900">
-                                                    {user.email}
+                                                <div className="text-gray-700 text-base">
+                                                    {category.description}
                                                 </div>
-                                                <div className="text-sm text-gray-500">
-                                                    {user.phone}
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                <span
-                                                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                                                        user.role.toLowerCase() ===
-                                                        "admin"
-                                                            ? "bg-green-100 text-green-900"
-                                                            : "bg-red-100 text-red-900"
-                                                    }`}
-                                                >
-                                                    {user.role}
-                                                </span>
-                                            </td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-md text-gray-500">
-                                                <p>
-                                                    {`${user.address.number}, ${user.address.city}-${user.address.zipcode}`}
-                                                </p>
                                             </td>
                                             <td className="px-6 py-4 flex justify-start items-center whitespace-nowrap text-gray-600">
                                                 <div
                                                     className="cursor-pointer transform transition-all hover:scale-110"
                                                     onClick={() =>
-                                                        userHandler(user._id)
+                                                        categoryHandler(
+                                                            category._id,
+                                                        )
                                                     }
                                                 >
                                                     <PencilAltIcon className="w-8 h-8" />
@@ -106,7 +89,9 @@ export default function UsersView({ loader, users, userHandler, userDelete }) {
                                                 <div
                                                     className="ml-2 cursor-pointer transform transition-all hover:scale-110"
                                                     onClick={() =>
-                                                        userDelete(user._id)
+                                                        categoryDeletes(
+                                                            category._id,
+                                                        )
                                                     }
                                                 >
                                                     <TrashIcon className="w-8 h-8" />

@@ -5,6 +5,7 @@ import {
     Route,
     Switch,
     useHistory,
+    useLocation,
     useRouteMatch,
 } from "react-router-dom";
 
@@ -16,6 +17,7 @@ import { loaderSelector, usersSelector } from "./users.slice";
 export default function Users() {
     const match = useRouteMatch();
     const history = useHistory();
+    const location = useLocation();
     const dispatch = useDispatch();
     const users = useSelector(usersSelector);
     const loader = useSelector(loaderSelector);
@@ -34,7 +36,7 @@ export default function Users() {
 
     useEffect(() => {
         dispatch(getAllUsers());
-    }, [dispatch]);
+    }, [dispatch, location]);
 
     const userDelete = (id) => {
         dispatch(deleteUser(id));

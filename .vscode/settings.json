@@ -6,6 +6,7 @@
         "formik",
         "headlessui",
         "heroicons",
+        "inputprops",
         "lastname",
         "repassword",
         "zipcode"

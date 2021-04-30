@@ -60,3 +60,19 @@ export const signupValidation = Yup.object({
     ),
     phone: Yup.string().required("Phone Number is required!"),
 });
+
+export const categoryValidation = Yup.object({
+    name: Yup.string().required("Category must have a name!"),
+    description: Yup.string().required("Description is required"),
+    image: Yup.mixed()
+        .required("Image is required")
+        .test(
+            "fileFormat",
+            "Unsupported Format",
+            (value) =>
+                value &&
+                ["image/jpg", "image/jpeg", "image/gif", "image/png"].includes(
+                    value.type,
+                ),
+        ),
+});
