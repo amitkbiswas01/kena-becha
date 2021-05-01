@@ -35,7 +35,7 @@ export default function ProfileView({ orderItems, user, updateHandler }) {
                             </li>
                             <li className="w-full flex items-center justify-between py-3">
                                 Address
-                                <div className="w-1/2 text-right">{`${user.address?.number} - ${user.address?.street} - ${user.address?.city} - ${user.address?.zipcode}`}</div>
+                                <div className="w-1/2 text-right">{`${user.number} - ${user.street} - ${user.city} - ${user.zipcode}`}</div>
                             </li>
                         </ul>
                         <div className="mt-8 w-full">
@@ -87,11 +87,11 @@ export default function ProfileView({ orderItems, user, updateHandler }) {
                                                     <div className="flex items-center">
                                                         <div className="text-md text-gray-900">
                                                             {status === 0 ? (
-                                                                <span className="inline-block bg-yellow-200 p-2 rounded-full">
+                                                                <span className="inline-block bg-yellow-300 p-2 rounded-full">
                                                                     Pending
                                                                 </span>
                                                             ) : (
-                                                                <span className="bg-green-300">
+                                                                <span className="bg-green-300 inline-block p-2 rounded-full">
                                                                     Delivered
                                                                 </span>
                                                             )}
@@ -106,7 +106,7 @@ export default function ProfileView({ orderItems, user, updateHandler }) {
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4">
-                                                    {`${userId.address?.number} - ${userId.address?.street} - ${userId.address?.city} - ${userId.address?.zipcode}`}
+                                                    {`${userId.address.number} - ${userId.address.street} - ${userId.address.city} - ${userId.address.zipcode}`}
                                                 </td>
                                             </tr>
                                         ),

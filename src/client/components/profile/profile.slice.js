@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { number } from "yup";
 import {
     getOrders,
     createOrder,
@@ -50,7 +51,20 @@ export const profileSlice = createSlice({
             if (!state.isLoading) state.isLoading = true;
         },
         [getUserInfo.fulfilled]: (state, action) => {
-            state.user = action.payload;
+            state.user = {
+                email: action.payload.email,
+                username: action.payload.username,
+                firstname: action.payload.firstname,
+                lastname: action.payload.lastname,
+                role: action.payload.role,
+                phone: action.payload.phone,
+                city: action.payload.address.city,
+                street: action.payload.address.street,
+                number: action.payload.address.number,
+                zipcode: action.payload.address.zipcode,
+                lat: action.payload.address.geolocation.lat,
+                long: action.payload.address.geolocation.long,
+            };
             if (state.isLoading) state.isLoading = false;
         },
         [getUserInfo.rejected]: (state, action) => {

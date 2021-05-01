@@ -11,12 +11,17 @@ import {
 import { getSingleProduct } from "./product.thunk";
 import ProductView from "./product.view";
 
+import { updateCart } from "client/components/cart/cart.thunk";
+import { loginSelector } from "shared/components/login/login.slice";
+
 export default function Product() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const loader = useSelector(loaderSelector);
     const product = useSelector(productSelector);
     const error = useSelector(errorSelector);
+    const isLoggedIn = useSelector(loginSelector);
+    const cartLoader = useSelector((state) => state.cartReducer.isLoading);
 
     useEffect(() => {
         dispatch(getSingleProduct(id));
@@ -33,6 +38,10 @@ export default function Product() {
         return decimal === "." ? ".0" : decimal;
     };
 
+    const cartHandler = (id, action) => {
+        dispatch(updateCart({ id: id, action: action }));
+    };
+
     return (
         <div>
             {loader ? (
@@ -40,7 +49,13 @@ export default function Product() {
             ) : error ? (
                 <h1>Error occurred!</h1>
             ) : (
-                <ProductView product={product} calcDecimal={calcDecimal} />
+                <ProductView
+                    product={product}
+                    calcDecimal={calcDecimal}
+                    cartHandler={cartHandler}
+                    cartLoader={cartLoader}
+                    isLoggedIn={isLoggedIn}
+                />
             )}
         </div>
     );

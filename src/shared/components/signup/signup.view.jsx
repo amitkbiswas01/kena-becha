@@ -233,7 +233,7 @@ export default function SignupView({ submitHandler, errorMessage }) {
                                                 House No.
                                             </label>
                                             <Field
-                                                type="text"
+                                                type="number"
                                                 id="number"
                                                 name="number"
                                                 placeholder=""
@@ -257,7 +257,7 @@ export default function SignupView({ submitHandler, errorMessage }) {
                                                 ZIP Code
                                             </label>
                                             <Field
-                                                type="text"
+                                                type="number"
                                                 id="zipcode"
                                                 name="zipcode"
                                                 placeholder=""
@@ -279,7 +279,7 @@ export default function SignupView({ submitHandler, errorMessage }) {
                                                 Latitude
                                             </label>
                                             <Field
-                                                type="text"
+                                                type="number"
                                                 id="lat"
                                                 name="lat"
                                                 placeholder="i.e. 27.2046"
@@ -301,7 +301,7 @@ export default function SignupView({ submitHandler, errorMessage }) {
                                                 Longitude
                                             </label>
                                             <Field
-                                                type="text"
+                                                type="number"
                                                 id="long"
                                                 name="long"
                                                 placeholder="i.e. 77.4977"

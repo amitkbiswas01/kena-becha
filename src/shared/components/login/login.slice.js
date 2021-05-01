@@ -21,7 +21,6 @@ export const productInitialState = {
 export const loginSlice = createSlice({
     name: "login",
     initialState: productInitialState,
-    // is it okay to access session like this?
     reducers: {
         logout: (state) => {
             sessionStorage.removeItem("user");
@@ -40,7 +39,8 @@ export const loginSlice = createSlice({
             if (state.error) state.error = null;
         },
         [loginHandler.rejected]: (state, action) => {
-            if (state.error === null) state.error = action.error;
+            console.log(action.payload);
+            // if (state.error === null) state.error = action.payload.message;
         },
     },
 });

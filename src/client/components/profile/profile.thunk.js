@@ -39,6 +39,8 @@ export const getUserInfo = createAsyncThunk("profile/getUserInfo", async () => {
         },
     });
 
+    console.log(res.data);
+
     return res.data;
 });
 

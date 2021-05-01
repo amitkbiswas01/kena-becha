@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -12,7 +12,7 @@ import { signupValidation } from "utils/validation";
 export default function ProfileForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { password, ...initialValues } = useSelector(userInfoSelector);
+    const initialValues = useSelector(userInfoSelector);
     const errorMessage = useSelector(errorSelector);
 
     const submitHandler = (values, submitProps) => {
@@ -100,51 +100,25 @@ export default function ProfileForm() {
                                         )}
                                     </ErrorMessage>
                                 </div>
-                                <div className="flex flex-col items-stretch md:flex-row md:justify-between pt-4">
-                                    <div className="flex flex-col w-full md:w-1/2 md:pr-2">
-                                        <label
-                                            htmlFor="username"
-                                            className="text-lg"
-                                        >
-                                            Username
-                                        </label>
-                                        <Field
-                                            type="text"
-                                            id="username"
-                                            name="username"
-                                            placeholder="i.e. ami@_23"
-                                            className="input"
-                                        />
-                                        <ErrorMessage name="username">
-                                            {(error) => (
-                                                <p className="error-msg">
-                                                    {error}
-                                                </p>
-                                            )}
-                                        </ErrorMessage>
-                                    </div>
-                                    <div className="flex flex-col w-full md:w-1/2 mt-4 md:mt-0 md:pr-2">
-                                        <label
-                                            htmlFor="role"
-                                            className="text-lg"
-                                        >
-                                            Role
-                                        </label>
-                                        <Field
-                                            type="text"
-                                            id="role"
-                                            name="role"
-                                            placeholder=""
-                                            className="input"
-                                        />
-                                        <ErrorMessage name="role">
-                                            {(error) => (
-                                                <p className="error-msg">
-                                                    {error}
-                                                </p>
-                                            )}
-                                        </ErrorMessage>
-                                    </div>
+                                <div className="flex flex-col w-full">
+                                    <label
+                                        htmlFor="username"
+                                        className="text-lg"
+                                    >
+                                        Username
+                                    </label>
+                                    <Field
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        placeholder="i.e. ami@_23"
+                                        className="input"
+                                    />
+                                    <ErrorMessage name="username">
+                                        {(error) => (
+                                            <p className="error-msg">{error}</p>
+                                        )}
+                                    </ErrorMessage>
                                 </div>
                                 <div className="flex flex-col pt-4">
                                     <label htmlFor="phone" className="text-lg">

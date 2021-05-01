@@ -17,13 +17,13 @@ export const signupInitials = {
     username: "",
     firstname: "",
     lastname: "",
+    phone: "",
     city: "",
     street: "",
     number: "",
     zipcode: "",
     lat: "",
     long: "",
-    phone: "",
 };
 
 export const signupValidation = Yup.object({
@@ -37,7 +37,7 @@ export const signupValidation = Yup.object({
     username: Yup.string("Username can't be just numbers!").required(
         "Username is required!",
     ),
-    role: Yup.string().required("Role must be defined!"),
+    // role: Yup.string().required("Role must be defined!"),
     firstname: Yup.string("Name can't be just numbers!").required(
         "First name is required!",
     ),
@@ -50,7 +50,9 @@ export const signupValidation = Yup.object({
     street: Yup.string("Street Can't be just numbers!").required(
         "Street name is required!",
     ),
-    number: Yup.string().required("House No. is required!"),
+    number: Yup.number("House No. must be a number").required(
+        "House No. is required!",
+    ),
     zipcode: Yup.string().required("Zipcode is required!"),
     lat: Yup.number("Latitude has to be a number!").required(
         "Latitude is required!",

@@ -65,8 +65,19 @@ export default function ProductsView({
                             {products.map((product, index) => (
                                 <tr key={index}>
                                     <td className="px-6 py-4">
-                                        <div className="text-md font-medium text-gray-900">
-                                            {product.title}
+                                        <div className="flex items-center">
+                                            <div className="flex-shrink-0 h-10 w-10">
+                                                <img
+                                                    className="h-10 w-auto"
+                                                    src={product.image}
+                                                    alt={product.name}
+                                                />
+                                            </div>
+                                            <div className="ml-4">
+                                                <div className="text-md text-gray-900">
+                                                    {product.name}
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
@@ -75,9 +86,9 @@ export default function ProductsView({
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-900">
-                                            {product.quantity}
-                                        </span>
+                                        <div className="text-md font-medium text-gray-900">
+                                            {product.category.name}
+                                        </div>
                                     </td>
                                     <td className="px-6 py-4 text-md text-gray-500">
                                         <p>{product.description}</p>
