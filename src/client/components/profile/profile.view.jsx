@@ -1,7 +1,4 @@
 import React from "react";
-import { XCircleIcon } from "@heroicons/react/solid";
-
-import login from "assets/images/login.jpg";
 
 export default function ProfileView({ orderItems, user, updateHandler }) {
     return (
