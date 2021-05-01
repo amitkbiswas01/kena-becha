@@ -12,7 +12,7 @@ export default function ClientRoutes() {
             <Route exact path={CART}>
                 <Cart />
             </Route>
-            <Route exact path={PROFILE}>
+            <Route path={PROFILE}>
                 <Profile />
             </Route>
             <Redirect exact from={APP} to={HOME} />

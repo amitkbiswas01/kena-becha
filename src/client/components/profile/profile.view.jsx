@@ -3,32 +3,28 @@ import { XCircleIcon } from "@heroicons/react/solid";
 
 import login from "assets/images/login.jpg";
 
-export default function ProfileView({ orderItems }) {
+export default function ProfileView({ orderItems, user, updateHandler }) {
     return (
         <section className="w-screen">
-            <div className="md:p-16 flex flex-col md:flex-row justify-center items-center">
+            <div className="md:p-12 md:pt-24 flex flex-col md:flex-row justify-center items-start">
                 {/* profile card */}
                 <div className="w-full md:w-1/3">
-                    <div className="bg-white p-4 shadow-lg rounded-lg">
-                        <div className="image overflow-hidden">
-                            <img
-                                className="h-auto w-full mx-auto"
-                                src={login}
-                                alt=""
-                            />
-                        </div>
-                        <h1 className="text-gray-900 mt-8 mb-4 font-bold text-2xl">
-                            Jane Doe{" "}
-                            <span className="text-base font-normal text-red-600">
-                                username
+                    <div className="bg-white p-8 shadow-lg rounded-lg">
+                        <h1 className="text-gray-900 mt-8 mb-4 text-4xl">
+                            {`${user.firstname} ${user.lastname}`}
+                            <span className="text-lg font-normal text-red-600">
+                                {`  @${user.username}`}
                             </span>
                         </h1>
-                        <div className="mb-4 flex justify-between items-center">
+                        <h3 className="mt-8 text-2xl font-bold border-b-2">
+                            Contact Info
+                        </h3>
+                        <div className="mb-16 mt-2 flex justify-between items-center">
                             <h3 className="text-gray-800 text-xl font-light">
-                                example@gmail.com
+                                {user.email}
                             </h3>
                             <h3 className="text-gray-800 text-xl font-light">
-                                01790063096
+                                {user.phone}
                             </h3>
                         </div>
                         <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
@@ -36,26 +32,32 @@ export default function ProfileView({ orderItems }) {
                                 <span>Role</span>
                                 <span className="ml-auto">
                                     <span className="bg-red-500 py-1 px-2 rounded text-white text-sm">
-                                        Admin
+                                        {user.role}
                                     </span>
                                 </span>
                             </li>
-                            <li className="flex items-center py-3">
-                                <span>Address</span>
-                                <span className="ml-auto">Faridpur</span>
+                            <li className="w-full flex items-center justify-between py-3">
+                                Address
+                                <div className="w-1/2 text-right">{`${user.address?.number} - ${user.address?.street} - ${user.address?.city} - ${user.address?.zipcode}`}</div>
                             </li>
                         </ul>
                         <div className="mt-8 w-full">
-                            <button className="w-full btn text-gray-100 bg-gray-600 border-0 font-medium">
+                            <button
+                                className="w-full btn text-gray-100 bg-gray-600 border-0 font-medium"
+                                onClick={() => updateHandler(user._id)}
+                            >
                                 Update Profile
                             </button>
                         </div>
                     </div>
                 </div>
                 {/* order list */}
-                <div className="w-full md:w-2/3 flex flex-col justify-center items-center">
+                <div className="w-full md:w-2/3 md:mx-auto my-24 md:my-0 flex flex-col justify-center items-center">
                     <h1 className="font-light text-4xl mb-8">List of Orders</h1>
-                    <div className="md:px-2 h-96 overflow-auto">
+                    <div
+                        className="w-full overflow-auto border-2 md:ml-12 rounded-lg"
+                        style={{ height: "30rem" }}
+                    >
                         <table className="w-full divide-y divide-gray-200">
                             <thead className="bg-gray-50">
                                 <tr>
@@ -75,14 +77,14 @@ export default function ProfileView({ orderItems }) {
                                         scope="col"
                                         className="px-6 py-3 text-left text-lg font-semibold text-gray-600 uppercase"
                                     >
-                                        Cancel
+                                        Shipping Address
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white overflow-y-scroll divide-y divide-gray-200">
+                            <tbody className="bg-white divide-y divide-gray-200">
                                 {orderItems &&
                                     orderItems.map(
-                                        ({ status, date, products }, index) => (
+                                        ({ status, date, userId }, index) => (
                                             <tr key={index}>
                                                 <td className="px-6 py-4">
                                                     <div className="flex items-center">
@@ -106,10 +108,8 @@ export default function ProfileView({ orderItems }) {
                                                         ).toUTCString()}
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap flex items-center justify-around">
-                                                    <button>
-                                                        <XCircleIcon className="h-8 w-8 text-green-500" />
-                                                    </button>
+                                                <td className="px-6 py-4">
+                                                    {`${userId.address?.number} - ${userId.address?.street} - ${userId.address?.city} - ${userId.address?.zipcode}`}
                                                 </td>
                                             </tr>
                                         ),
