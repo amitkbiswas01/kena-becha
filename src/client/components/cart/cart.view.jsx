@@ -4,6 +4,7 @@ import {
     MinusCircleIcon,
     ArrowCircleRightIcon,
 } from "@heroicons/react/solid";
+import { BASE_URL } from "utils/constants";
 
 export default function CartView({
     loader,
@@ -86,6 +87,7 @@ export default function CartView({
                                                                 <img
                                                                     className="h-10 w-auto"
                                                                     src={
+                                                                        BASE_URL +
                                                                         productId.image
                                                                     }
                                                                     alt={

@@ -2,8 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { APP } from "utils/constants";
-
 import { loginHandler } from "./login.thunk";
 import { errorSelector } from "./login.slice";
 import LoginView from "./login.view";
@@ -16,7 +14,7 @@ export default function Login() {
     const submitHandler = async (values, submitProps) => {
         const { type } = await dispatch(loginHandler(values));
         if (type !== "login/loginHandler/rejected") {
-            history.push(APP);
+            history.go(0);
         } else {
             submitProps.setSubmitting(false);
         }

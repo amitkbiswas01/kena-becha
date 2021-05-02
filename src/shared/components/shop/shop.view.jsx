@@ -5,7 +5,7 @@ import {
     SearchIcon,
     ArrowCircleLeftIcon,
 } from "@heroicons/react/solid";
-import { SHOP } from "utils/constants";
+import { SHOP, BASE_URL } from "utils/constants";
 
 export default function ShopView({
     products,
@@ -105,7 +105,7 @@ export default function ShopView({
                             >
                                 <img
                                     className="hover:grow object-contain h-48 w-full cursor-pointer"
-                                    src={product.image}
+                                    src={BASE_URL + product.image}
                                     alt={product.title}
                                     onClick={() => viewDetails(product._id)}
                                 />

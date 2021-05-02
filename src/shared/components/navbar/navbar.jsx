@@ -13,6 +13,7 @@ import {
     LOGOUT,
     PROFILE,
     CART,
+    ADMIN_HOME,
 } from "utils/constants";
 
 export const navigationItems = [
@@ -32,9 +33,20 @@ export const privateItems = [
 
 export default function Navbar({ isLoggedIn }) {
     const profileItems = isLoggedIn ? privateItems : publicItems;
-    const navbarItems = isLoggedIn
-        ? [...navigationItems, { name: "Cart", href: CART }]
-        : navigationItems;
+
+    let navItems = [];
+
+    if (isLoggedIn && sessionStorage.getItem("role") === "admin") {
+        navItems = [
+            ...navigationItems,
+            { name: "Cart", href: CART },
+            { name: "Admin", href: ADMIN_HOME },
+        ];
+    } else if (isLoggedIn) {
+        navItems = [...navigationItems, { name: "Cart", href: CART }];
+    } else {
+        navItems = navigationItems;
+    }
 
     return (
         <Disclosure as="nav" className="bg-white sticky shadow-md">
@@ -77,7 +89,7 @@ export default function Navbar({ isLoggedIn }) {
                                 </NavLink>
                                 <div className="hidden sm:block sm:ml-auto">
                                     <div className="flex space-x-4">
-                                        {navbarItems.map((item, index) => (
+                                        {navItems.map((item, index) => (
                                             <NavLink
                                                 key={index}
                                                 to={item.href}
@@ -150,7 +162,7 @@ export default function Navbar({ isLoggedIn }) {
 
                     <Disclosure.Panel className="sm:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1">
-                            {navbarItems.map((item, index) => (
+                            {navItems.map((item, index) => (
                                 <NavLink
                                     key={index}
                                     to={item.href}

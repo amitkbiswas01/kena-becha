@@ -39,8 +39,7 @@ export const loginSlice = createSlice({
             if (state.error) state.error = null;
         },
         [loginHandler.rejected]: (state, action) => {
-            console.log(action.payload);
-            // if (state.error === null) state.error = action.payload.message;
+            if (state.error === null) state.error = action.payload;
         },
     },
 });

@@ -1,6 +1,7 @@
 import React from "react";
 import NotFound from "../404/404";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
+import { BASE_URL } from "utils/constants";
 
 export default function ProductView({
     product,
@@ -19,7 +20,7 @@ export default function ProductView({
                 <div className="md:flex items-center">
                     <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                         <img
-                            src={product.image}
+                            src={BASE_URL + product.image}
                             className="mx-auto w-11/12 md:w-3/4 p-8 h-full border-4 border-red-500"
                             alt={product.title}
                         />
@@ -35,7 +36,7 @@ export default function ProductView({
                             <p>{product.description}</p>
                         </div>
 
-                        <div className="flex justify-around items-center flex-wrap">
+                        <div className="flex justify-around items-center">
                             <div className="align-bottom">
                                 <span className="text-2xl leading-none align-baseline">
                                     $

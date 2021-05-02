@@ -6,8 +6,6 @@ import { SIGNUP_URL } from "utils/constants";
 export const signupHandler = createAsyncThunk(
     "signup/signupHandler",
     async (values) => {
-        console.log(values);
-
         const data = {
             email: values.email,
             username: values.username,
@@ -26,7 +24,6 @@ export const signupHandler = createAsyncThunk(
             },
             phone: values.phone,
         };
-        console.log(data);
         const res = await axios.post(SIGNUP_URL, data);
         return res.data;
     },

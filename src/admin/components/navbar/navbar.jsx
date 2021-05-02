@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import {
     UserCircleIcon,
@@ -15,26 +15,18 @@ import {
     ADMIN_ORDERS,
     ADMIN_CATEGORIES,
 } from "utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { userInfoSelector } from "client/components/profile/profile.slice";
+import { getUserInfo } from "client/components/profile/profile.thunk";
 
 export default function AdminNavbar() {
-    const user = {
-        email: "test@gmail.com",
-        username: "username",
-        password: "password",
-        firstname: "Amit",
-        lastname: "Biswas",
-        address: {
-            city: "Address",
-            street: "Address",
-            number: "Address",
-            zipcode: "Address",
-            geolocation: {
-                lat: "LAT",
-                long: "LONG",
-            },
-        },
-        phone: "Phone Number",
-    };
+    const dispatch = useDispatch();
+    const user = useSelector(userInfoSelector);
+
+    useEffect(() => {
+        dispatch(getUserInfo());
+    }, [dispatch]);
+
     const navItems = [
         {
             name: "users",

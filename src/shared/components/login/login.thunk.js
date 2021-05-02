@@ -6,11 +6,8 @@ import { LOGIN_URL } from "utils/constants";
 export const loginHandler = createAsyncThunk(
     "login/loginHandler",
     async (values) => {
-        console.log(values);
         const res = await axios.post(LOGIN_URL, values);
         const { userInfo } = res.data;
-
-        console.log(res.data);
 
         sessionStorage.setItem("user", userInfo.user);
         sessionStorage.setItem("role", userInfo.role);
