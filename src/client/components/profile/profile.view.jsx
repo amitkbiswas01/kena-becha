@@ -1,6 +1,12 @@
 import React from "react";
+import Loader from "shared/components/loader/loader";
 
-export default function ProfileView({ orderItems, user, updateHandler }) {
+export default function ProfileView({
+    orderItems,
+    user,
+    updateHandler,
+    loader,
+}) {
     return (
         <section className="w-screen">
             <div className="md:p-12 md:pt-24 flex flex-col md:flex-row justify-center items-start">
@@ -55,64 +61,72 @@ export default function ProfileView({ orderItems, user, updateHandler }) {
                         className="w-full overflow-auto border-2 md:ml-12 rounded-lg"
                         style={{ height: "30rem" }}
                     >
-                        <table className="w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                                <tr>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-lg font-semibold text-gray-600 uppercase"
-                                    >
-                                        Status
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-lg font-semibold text-gray-600 uppercase"
-                                    >
-                                        Date
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-lg font-semibold text-gray-600 uppercase"
-                                    >
-                                        Shipping Address
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                                {orderItems &&
-                                    orderItems.map(
-                                        ({ status, date, userId }, index) => (
-                                            <tr key={index}>
-                                                <td className="px-6 py-4">
-                                                    <div className="flex items-center">
-                                                        <div className="text-md text-gray-900">
-                                                            {status === 0 ? (
-                                                                <span className="inline-block bg-yellow-300 p-2 rounded-full">
-                                                                    Pending
-                                                                </span>
-                                                            ) : (
-                                                                <span className="bg-green-300 inline-block p-2 rounded-full">
-                                                                    Delivered
-                                                                </span>
-                                                            )}
+                        {loader ? (
+                            <Loader />
+                        ) : (
+                            <table className="w-full divide-y divide-gray-200">
+                                <thead className="bg-gray-50">
+                                    <tr>
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 text-left text-lg font-semibold text-gray-600 uppercase"
+                                        >
+                                            Status
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 text-left text-lg font-semibold text-gray-600 uppercase"
+                                        >
+                                            Date
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 text-left text-lg font-semibold text-gray-600 uppercase"
+                                        >
+                                            Shipping Address
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody className="bg-white divide-y divide-gray-200">
+                                    {orderItems &&
+                                        orderItems.map(
+                                            (
+                                                { status, date, userId },
+                                                index,
+                                            ) => (
+                                                <tr key={index}>
+                                                    <td className="px-6 py-4">
+                                                        <div className="flex items-center">
+                                                            <div className="text-md text-gray-900">
+                                                                {status ===
+                                                                0 ? (
+                                                                    <span className="inline-block bg-yellow-300 p-2 rounded-full">
+                                                                        Pending
+                                                                    </span>
+                                                                ) : (
+                                                                    <span className="bg-green-300 inline-block p-2 rounded-full">
+                                                                        Delivered
+                                                                    </span>
+                                                                )}
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-lg font-light text-gray-900">
-                                                        {new Date(
-                                                            date,
-                                                        ).toUTCString()}
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    {`${userId.address.number} - ${userId.address.street} - ${userId.address.city} - ${userId.address.zipcode}`}
-                                                </td>
-                                            </tr>
-                                        ),
-                                    )}
-                            </tbody>
-                        </table>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-lg font-light text-gray-900">
+                                                            {new Date(
+                                                                date,
+                                                            ).toUTCString()}
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        {`${userId.address.number} - ${userId.address.street} - ${userId.address.city} - ${userId.address.zipcode}`}
+                                                    </td>
+                                                </tr>
+                                            ),
+                                        )}
+                                </tbody>
+                            </table>
+                        )}
                     </div>
                 </div>
             </div>

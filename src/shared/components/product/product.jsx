@@ -13,6 +13,7 @@ import ProductView from "./product.view";
 
 import { updateCart } from "client/components/cart/cart.thunk";
 import { loginSelector } from "shared/components/login/login.slice";
+import Loader from "../loader/loader";
 
 export default function Product() {
     const dispatch = useDispatch();
@@ -45,9 +46,7 @@ export default function Product() {
     return (
         <div>
             {loader ? (
-                <h1>Loading ...</h1>
-            ) : error ? (
-                <h1>Error occurred!</h1>
+                <Loader />
             ) : (
                 <ProductView
                     product={product}

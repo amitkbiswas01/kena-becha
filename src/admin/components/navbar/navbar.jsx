@@ -14,6 +14,7 @@ import {
     ADMIN_PRODUCTS,
     ADMIN_ORDERS,
     ADMIN_CATEGORIES,
+    APP,
 } from "utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { userInfoSelector } from "client/components/profile/profile.slice";
@@ -52,11 +53,14 @@ export default function AdminNavbar() {
     return (
         <nav className="flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
             {/* header */}
-            <div className="flex items-center border-b-2 border-gray-600 lowercase justify-center pb-2">
+            <NavLink
+                to={APP}
+                className="flex items-center border-b-2 border-gray-600 lowercase justify-center pb-2"
+            >
                 <span className="text-xl font-semibold dark:text-gray-300">
                     কেনা-বেচা
                 </span>
-            </div>
+            </NavLink>
             {/* user info */}
             <div className="mt-8">
                 <h2 className="mt-4 text-2xl dark:text-gray-300 font-extrabold capitalize">

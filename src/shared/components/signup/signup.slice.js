@@ -8,11 +8,11 @@ export const signupSlice = createSlice({
     },
     reducers: {},
     extraReducers: {
-        [signupHandler.fulfilled]: (state, action) => {
+        [signupHandler.fulfilled]: (state) => {
             if (state.error) state.error = null;
         },
         [signupHandler.rejected]: (state, action) => {
-            if (state.error === null) state.error = action.error;
+            if (state.error === null) state.error = action.payload;
         },
     },
 });

@@ -11,9 +11,11 @@ import {
 
 import { deleteProduct } from "./products.thunk";
 import { getProducts } from "shared/components/shop/shop.thunk";
-import { productsSelector } from "shared/components/shop/shop.slice";
+import {
+    productsSelector,
+    loaderSelector,
+} from "shared/components/shop/shop.slice";
 import { getSingleProduct } from "shared/components/product/product.thunk";
-import { loaderSelector } from "./products.slice";
 import ProductsForm from "./products.form";
 import ProductsView from "./products.view";
 

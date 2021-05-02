@@ -20,7 +20,7 @@ export const shopSlice = createSlice({
         },
     },
     extraReducers: {
-        [getProducts.pending]: (state, action) => {
+        [getProducts.pending]: (state) => {
             if (!state.isLoading) state.isLoading = true;
         },
         [getProducts.fulfilled]: (state, action) => {

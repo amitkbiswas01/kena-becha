@@ -8,6 +8,7 @@ import CartView from "./cart.view";
 
 import { PROFILE } from "utils/constants";
 import { createOrder } from "../profile/profile.thunk";
+import Loader from "shared/components/loader/loader";
 
 export default function Cart() {
     const dispatch = useDispatch();
@@ -31,12 +32,16 @@ export default function Cart() {
 
     return (
         <div>
-            <CartView
-                loader={loader}
-                cartItems={cartItems}
-                cartHandler={cartHandler}
-                checkoutHandler={checkoutHandler}
-            />
+            {loader ? (
+                <Loader />
+            ) : (
+                <CartView
+                    loader={loader}
+                    cartItems={cartItems}
+                    cartHandler={cartHandler}
+                    checkoutHandler={checkoutHandler}
+                />
+            )}
         </div>
     );
 }
