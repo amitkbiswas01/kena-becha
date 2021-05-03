@@ -2,12 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import {
-    reset,
-    loaderSelector,
-    productSelector,
-    errorSelector,
-} from "./product.slice";
+import { reset, loaderSelector, productSelector } from "./product.slice";
 import { getSingleProduct } from "./product.thunk";
 import ProductView from "./product.view";
 
@@ -20,7 +15,6 @@ export default function Product() {
     const { id } = useParams();
     const loader = useSelector(loaderSelector);
     const product = useSelector(productSelector);
-    const error = useSelector(errorSelector);
     const isLoggedIn = useSelector(loginSelector);
     const cartLoader = useSelector((state) => state.cartReducer.isLoading);
 

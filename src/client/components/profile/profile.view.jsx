@@ -103,9 +103,14 @@ export default function ProfileView({
                                                                     <span className="inline-block bg-yellow-300 p-2 rounded-full">
                                                                         Pending
                                                                     </span>
-                                                                ) : (
+                                                                ) : status ===
+                                                                  1 ? (
                                                                     <span className="bg-green-300 inline-block p-2 rounded-full">
                                                                         Delivered
+                                                                    </span>
+                                                                ) : (
+                                                                    <span className="bg-red-300 inline-block p-2 rounded-full">
+                                                                        Cancelled
                                                                     </span>
                                                                 )}
                                                             </div>
