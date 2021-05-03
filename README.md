@@ -38,4 +38,4 @@ yarn start
 
 ![Admin](src/assets/screenshots/admin-user.png)
 ![Admin](src/assets/screenshots/admin-order.png)
-![Admin](src/assets/screenshots/admin-categories.png)
+![Admin](src/assets/screenshots/admin-cat.png)
