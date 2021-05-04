@@ -11,6 +11,7 @@ import { loginSelector } from "../login/login.slice";
 import { updateCart } from "client/components/cart/cart.thunk";
 import { getAllCategories } from "admin/components/categories/categories.thunk";
 import { categoriesSelector } from "admin/components/categories/categories.slice";
+import { LOGIN } from "utils/constants";
 
 export default function Shop() {
     const history = useHistory();
@@ -35,7 +36,8 @@ export default function Shop() {
     };
 
     const cartHandler = (id, action) => {
-        dispatch(updateCart({ id: id, action: action }));
+        if (isLoggedIn) dispatch(updateCart({ id: id, action: action }));
+        else history.push(LOGIN);
     };
 
     return (
@@ -46,7 +48,6 @@ export default function Shop() {
                 <ShopView
                     viewDetails={viewDetails}
                     products={products}
-                    isLoggedIn={isLoggedIn}
                     cartHandler={cartHandler}
                     cartLoader={cartLoader}
                     categories={categories}

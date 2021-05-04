@@ -10,7 +10,6 @@ import { SHOP, BASE_URL } from "utils/constants";
 export default function ShopView({
     products,
     viewDetails,
-    isLoggedIn,
     cartHandler,
     cartLoader,
     categories,
@@ -124,18 +123,16 @@ export default function ShopView({
                                     <p className="rounded-full text-white bg-red-500 px-2 py-1 text-xs font-bold">
                                         {product.category.name}
                                     </p>
-                                    {isLoggedIn && (
-                                        <button
-                                            className="btn text-sm font-bold px-2 py-1 hover:text-white hover:bg-red-500"
-                                            disabled={cartLoader}
-                                            onClick={() =>
-                                                cartHandler(product._id, "add")
-                                            }
-                                        >
-                                            <ShoppingCartIcon className="w-5 h-5 inline-block mr-1" />{" "}
-                                            Add to cart
-                                        </button>
-                                    )}
+                                    <button
+                                        className="btn text-sm font-bold px-2 py-1 hover:text-white hover:bg-red-500"
+                                        disabled={cartLoader}
+                                        onClick={() =>
+                                            cartHandler(product._id, "add")
+                                        }
+                                    >
+                                        <ShoppingCartIcon className="w-5 h-5 inline-block mr-1" />
+                                        Add to cart
+                                    </button>
                                 </div>
                             </div>
                         );

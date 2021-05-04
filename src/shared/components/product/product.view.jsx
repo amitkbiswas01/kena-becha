@@ -8,7 +8,6 @@ export default function ProductView({
     calcDecimal,
     cartLoader,
     cartHandler,
-    isLoggedIn,
 }) {
     if (typeof cartLoader !== "boolean") cartLoader = false;
 
@@ -48,18 +47,14 @@ export default function ProductView({
                                     {calcDecimal(product.price)}
                                 </span>
                             </div>
-                            {isLoggedIn && (
-                                <button
-                                    className="btn text-lg md:text-2xl font-bold px-4 py-2 hover:text-white hover:bg-red-500"
-                                    disabled={cartLoader}
-                                    onClick={() =>
-                                        cartHandler(product._id, "add")
-                                    }
-                                >
-                                    <ShoppingCartIcon className="w-5 h-5 inline-block mr-1" />{" "}
-                                    Add to cart
-                                </button>
-                            )}
+                            <button
+                                className="btn text-lg md:text-2xl font-bold px-4 py-2 hover:text-white hover:bg-red-500"
+                                disabled={cartLoader}
+                                onClick={() => cartHandler(product._id, "add")}
+                            >
+                                <ShoppingCartIcon className="w-5 h-5 inline-block mr-1" />{" "}
+                                Add to cart
+                            </button>
                             <div className="rounded-full text-gray-500 border-2 px-2 py-1 md:px-4 md:py-2 text-base md:text-lg font-bold">
                                 <p>{product.category.name}</p>
                             </div>

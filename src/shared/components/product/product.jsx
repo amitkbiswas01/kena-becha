@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { reset, loaderSelector, productSelector } from "./product.slice";
 import { getSingleProduct } from "./product.thunk";
@@ -9,10 +9,12 @@ import ProductView from "./product.view";
 import { updateCart } from "client/components/cart/cart.thunk";
 import { loginSelector } from "shared/components/login/login.slice";
 import Loader from "../loader/loader";
+import { LOGIN } from "utils/constants";
 
 export default function Product() {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const history = useHistory();
     const loader = useSelector(loaderSelector);
     const product = useSelector(productSelector);
     const isLoggedIn = useSelector(loginSelector);
@@ -34,7 +36,8 @@ export default function Product() {
     };
 
     const cartHandler = (id, action) => {
-        dispatch(updateCart({ id: id, action: action }));
+        if (isLoggedIn) dispatch(updateCart({ id: id, action: action }));
+        else history.push(LOGIN);
     };
 
     return (
@@ -47,7 +50,6 @@ export default function Product() {
                     calcDecimal={calcDecimal}
                     cartHandler={cartHandler}
                     cartLoader={cartLoader}
-                    isLoggedIn={isLoggedIn}
                 />
             )}
         </div>
