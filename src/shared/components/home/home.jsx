@@ -2,9 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import banner from "assets/images/banner.jpg";
-import { SIGNUP, SHOP } from "utils/constants";
+import { SIGNUP, SHOP, CART } from "utils/constants";
 
-export default function Home() {
+export default function Home({ isLoggedIn }) {
     return (
         <section
             className="pt-12 md:pt-0 w-full mx-auto bg-gray-100 flex md:items-center bg-cover bg-right"
@@ -32,9 +32,9 @@ export default function Home() {
                     <div className="flex flex-col md:flex-row">
                         <NavLink
                             className="px-4 py-2 mb-4 md:mr-4 inline-block text-lg font-light transform transition-all hover:scale-110 border-2 border-red-400 hover:border-red-600 text-gray-800 rounded-sm"
-                            to={SIGNUP}
+                            to={isLoggedIn ? CART : SIGNUP}
                         >
-                            Register Now
+                            {isLoggedIn ? "Go to Cart" : "Register Now"}
                         </NavLink>
                         <NavLink
                             className="px-4 py-2 mb-4 md:mr-4 inline-block text-lg font-light transform transition-all hover:scale-110 border-2 border-red-400 hover:border-red-600 text-gray-800 rounded-sm"

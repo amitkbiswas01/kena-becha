@@ -13,7 +13,7 @@ export default function Shared() {
         <>
             <Navbar isLoggedIn={isLoggedIn} />
             <main>
-                <SharedRoutes />
+                <SharedRoutes isLoggedIn={isLoggedIn} />
             </main>
             <Footer />
         </>

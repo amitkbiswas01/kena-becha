@@ -12,11 +12,11 @@ import Login from "./components/login/login";
 import Logout from "./components/logout/logout";
 import Signup from "./components/signup/signup";
 
-export default function SharedRoutes() {
+export default function SharedRoutes({ isLoggedIn }) {
     return (
         <Switch>
             <Route exact path={HOME}>
-                <Home />
+                <Home isLoggedIn={isLoggedIn} />
             </Route>
             <Route exact path={ABOUT}>
                 <About />
